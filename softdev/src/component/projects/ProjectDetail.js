@@ -3,8 +3,10 @@ import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 const ProjectDetail = (props) => {
-    const { project } = props;
+    const { project ,auth } = props;
+    if (!auth.uid) return <Redirect to='/Login/' />
     if (project) {
         return (
             <div>
@@ -21,20 +23,21 @@ const ProjectDetail = (props) => {
 
             </div>
         )
-    }else{
+    } else {
         return (
-        <div>
-            <Card>
-                <CardBody>
-                    <CardTitle>Loading project...</CardTitle>
-                </CardBody>
-            </Card>
+            <div>
+                <Card>
+                    <CardBody>
+                        <CardTitle>Loading project...</CardTitle>
+                    </CardBody>
+                </Card>
 
-        </div>
+            </div>
 
 
-    )}
-    
+        )
+    }
+
 
 
 }
@@ -45,7 +48,8 @@ const mapStateToProps = (state, ownProps) => {
     const projects = state.firestore.data.projects;
     const project = projects ? projects[id] : null
     return {
-        project: project
+        project: project,
+        auth: state.firebase.auth
     }
 }
 export default compose(
