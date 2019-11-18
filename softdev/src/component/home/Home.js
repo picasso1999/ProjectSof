@@ -5,7 +5,7 @@ import DataCard from './DataCard'
 class Home extends Component {
     render() {
         return (
-            <div className="container-fluid">
+        <div className="container-fluid"> 
                 <div className="row">
                     <div className="col">
                         <Slidebar />
@@ -23,7 +23,8 @@ class Home extends Component {
 
                     </div>
                 </div>
-            </div>
+            </div> 
+
         )
     }
 

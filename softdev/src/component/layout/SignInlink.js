@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
-
-
+import { connect } from 'react-redux'
+import { userInfo } from 'os';
 
 const SignInlink = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  
+  const {profile} = props
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -27,8 +26,8 @@ const SignInlink = (props) => {
                 </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem >
-                  Welcome ...
-                  </DropdownItem >
+                  Welcome "{profile.initials}"
+                </DropdownItem >
                 <DropdownItem divider />
                 <DropdownItem href="/Cart/">
                   Cart
@@ -51,9 +50,11 @@ const SignInlink = (props) => {
     </div>
   );
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: () => dispatch(signOut())
   }
 }
+
 export default connect(null, mapDispatchToProps)(SignInlink)

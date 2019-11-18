@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
+
 const ProjectDetail = (props) => {
     const { project ,auth } = props;
     if (!auth.uid) return <Redirect to='/Login/' />

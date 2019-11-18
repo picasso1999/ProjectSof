@@ -8,7 +8,7 @@ const DataCard = (props) => {
   return (
     <CardDeck>
       <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-        <CardImg top width="100%" src={require("./Food1.jpg")} alt="Card image cap" />
+        <CardImg top width="100%" src={require("./img/Food1.jpg")} alt="Card image cap" />
         <CardBody>
           <CardTitle>Food1</CardTitle>
           <CardSubtitle>Card subtitle</CardSubtitle>
@@ -17,7 +17,7 @@ const DataCard = (props) => {
         </CardBody>
       </Card>
       <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-        <CardImg top width="100%" src={require("./Food2.jpg")} alt="Card image cap" />
+        <CardImg top width="100%" src={require("./img/Food2.jpg")} alt="Card image cap" />
         <CardBody>
           <CardTitle>Food2</CardTitle>
           <CardSubtitle>Card subtitle</CardSubtitle>
@@ -26,7 +26,7 @@ const DataCard = (props) => {
         </CardBody>
       </Card>
       <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-        <CardImg top width="100%" src={require("./Food3.jpg")} alt="Card image cap" />
+        <CardImg top width="100%" src={require("./img/Food3.jpg")} alt="Card image cap" />
         <CardBody>
           <CardTitle>Food3</CardTitle>
           <CardSubtitle>Card subtitle</CardSubtitle>
