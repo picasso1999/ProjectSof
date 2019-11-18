@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
+import moment from 'moment'
 const ProjectSummary = ({project}) =>{
     return(
         <div>
@@ -8,7 +9,7 @@ const ProjectSummary = ({project}) =>{
                     <CardTitle>{project.title}</CardTitle>
                     <CardText>Post By {project.authorFirstName}</CardText>
                     <CardText>
-                        <small className="text-muted">{project.createdAt.toDate().toString()}</small>
+                        <small className="text-muted">{moment(project.createdAt.toDate()).calendar()}</small>
                     </CardText>
                 </CardBody>
             </Card>

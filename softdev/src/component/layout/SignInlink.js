@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { signOut } from '../../store/actions/authActions'
 import { connect } from 'react-redux'
-import { userInfo } from 'os';
 
 const SignInlink = (props) => {
   const [isOpen, setIsOpen] = useState(false);

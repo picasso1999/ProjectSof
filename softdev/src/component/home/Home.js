@@ -5,25 +5,19 @@ import DataCard from './DataCard'
 class Home extends Component {
     render() {
         return (
-        <div className="container-fluid"> 
-                <div className="row">
-                    <div className="col">
+            <div className="container-fluid">
+                <Row>
+                    <Col>
                         <Slidebar />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-
-                    </div>
-                    <div className="col-lg-10">
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg={{ size: 10, offset: 1 }}>
                         <br />
                         <DataCard />
-                    </div>
-                    <div className="col">
-
-                    </div>
-                </div>
-            </div> 
+                    </Col>
+                </Row>
+            </div>
 
         )
     }
