@@ -16,7 +16,7 @@ const ProjectDetail = (props) => {
                         <CardText>{project.content}</CardText>
                         <CardText>
                             <small className="text-muted">Post by {project.authorFirstName}{project.authorLastName}</small>
-                            <small className="text-muted"></small>
+                            <small className="text-muted">{project.createdAt.toDate().toString()}</small>
                         </CardText>
                     </CardBody>
                 </Card>

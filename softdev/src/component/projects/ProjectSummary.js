@@ -8,7 +8,7 @@ const ProjectSummary = ({project}) =>{
                     <CardTitle>{project.title}</CardTitle>
                     <CardText>Post By {project.authorFirstName}</CardText>
                     <CardText>
-                        <small className="text-muted">Last updated 3 mins ago</small>
+                        <small className="text-muted">{project.createdAt.toDate().toString()}</small>
                     </CardText>
                 </CardBody>
             </Card>

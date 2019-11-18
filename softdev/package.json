@@ -8,6 +8,7 @@
     "firebase": "^7.4.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-firebaseui": "^4.0.0",
     "react-redux": "^5.1.1",
     "react-redux-firebase": "^2.2.4",
     "react-router-dom": "^5.1.2",

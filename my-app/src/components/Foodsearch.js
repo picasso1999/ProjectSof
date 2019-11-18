@@ -16,7 +16,7 @@ export default class Foodsearch extends Component {
     })
   })]
   Showdata(){
-    p
+    
   }
 
   

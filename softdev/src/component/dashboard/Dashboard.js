@@ -11,7 +11,7 @@ class Dashboard extends Component {
     render() {
         //console.log(this.props);
         const {projects, auth} = this.props;
-        if(!auth.uid) return <Redirect to='/Login/' />
+        //if(!auth.uid) return <Redirect to='/Login/' />
         return (
             <Container>
                 <Row>
