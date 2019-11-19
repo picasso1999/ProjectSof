@@ -4,24 +4,30 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-
+import moment from 'moment'
+import {Button} from 'reactstrap'
 const ProjectDetail = (props) => {
     const { project ,auth } = props;
     if (!auth.uid) return <Redirect to='/Login/' />
     if (project) {
         return (
             <div>
+                <pre>
                 <Card>
                     <CardBody>
-                        <CardTitle>{project.title}</CardTitle>
-                        <CardText>{project.content}</CardText>
+                        <CardTitle>ขื่อร้าน =>{project.name}</CardTitle>
+                        <CardText>ชื่อเมนู =>{project.val}</CardText>
+                        <CardText>ราคา => {project.price}</CardText>
+                        <CardText>ที่อยู่ => {project.address}</CardText>
                         <CardText>
                             <small className="text-muted">Post by {project.authorFirstName}{project.authorLastName}</small>
-                            <small className="text-muted">{project.createdAt.toDate().toString()}</small>
+                            <small className="text-muted">{moment(project.createdAt.toDate().toString()).calendar()}</small>
+                           
                         </CardText>
                     </CardBody>
                 </Card>
-
+                <Button color= "primary"className="Butter" id="butterfly" >ADD CART</Button>
+                </pre>
             </div>
         )
     } else {
