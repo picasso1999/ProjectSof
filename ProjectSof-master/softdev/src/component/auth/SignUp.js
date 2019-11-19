@@ -1,17 +1,35 @@
 import React, { Component } from 'react'
-import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import {Redirect} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {signUp} from '../../store/actions/authActions'
+import { Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { signUp } from '../../store/actions/authActions'
+
+import firebase from 'firebase/app';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
 class SignUp extends Component {
     state = {
-        userName:'',
+        userName: '',
         userPassword: '',
         userEmail: '',
-        userFirstname:'',
-        userLastname:'',
-        userTelnumber:''
+        userFirstname: '',
+        userLastname: '',
+        userTelnumber: ''
     }
+
+    uiConfig = {
+
+        signInFlow: 'popup',
+
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        ],
+        callbacks: {
+
+            signInSuccess: () => false
+        }
+    };
 
     handleChange = (e) => {
         this.setState({
@@ -24,30 +42,44 @@ class SignUp extends Component {
     }
 
     render() {
-        const{auth} = this.props;
-        if(auth.uid) return <Redirect to='/' />
+        const { auth } = this.props;
+        if (auth.uid) return <Redirect to='/' />
         return (
-            <div>
+            <Container>
                 <Form onSubmit={this.handleSubmit}>
                     <Row>
-                        <Col sm="12" md={{ size: 6, offset: 3 }}>
-                            <FormGroup>
+                        <Col sm="12" md={{ size: 6, offset: 6 }}>
+                            <br></br>
+                            <br></br>
 
-                                <Label for="exUsername">Username</Label>
+
+                            <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={{ size: 5, offset: 1 }} sm="5" md={{ size: 2, offset: 7 }}>
+                            <hr width="85%" align="right"  ></hr>
+                        </Col>
+                        or
+                        <Col xs={{ size: 5, offset: 0 }} sm="5" md={{ size: 2, offset: 0 }}>
+                            <hr width="80%" align="left" ></hr>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
+                            <FormGroup>
                                 <Input
                                     type="username"
                                     name="username"
                                     id="userName"
                                     placeholder="username"
                                     onChange={this.handleChange} />
-
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm="12" md={{ size: 6, offset: 3 }}>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Label for="exPassword">Password</Label>
                                 <Input
                                     type="password"
                                     name="password"
@@ -58,27 +90,23 @@ class SignUp extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm="12" md={{ size: 6, offset: 3 }}>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-
-                                <Label for="exEmail">Email</Label>
                                 <Input
                                     type="email"
                                     name="email"
                                     id="userEmail"
                                     placeholder="Email"
                                     onChange={this.handleChange} />
-
                             </FormGroup>
                         </Col>
                     </Row>
-
                     <Row>
-                        <Col sm="12" md={{ size: 6, offset: 3 }}>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <Row>
                                 <Col>
                                     <FormGroup>
-                                        <Label for="exFirstname">Firstname</Label>
+
                                         <Input
                                             type="Firstname"
                                             name="Firstname"
@@ -89,7 +117,6 @@ class SignUp extends Component {
                                 </Col>
                                 <Col>
                                     <FormGroup>
-                                        <Label for="exLastname">Lastname</Label>
                                         <Input
                                             type="Lastname"
                                             name="Lastname"
@@ -102,9 +129,8 @@ class SignUp extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm="12" md={{ size: 6, offset: 3 }}>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Label for="exTelnumber">Tel. number</Label>
                                 <Input
                                     type="Telnumber"
                                     name="Telnumber"
@@ -113,31 +139,31 @@ class SignUp extends Component {
                                     onChange={this.handleChange} />
                             </FormGroup>
                         </Col>
-
                     </Row>
                     <Row>
-                        <Col sm="12" md={{ size: 6, offset: 3 }}>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <Button color="primary" block >Sign Me UP!</Button>
                         </Col>
                     </Row>
+
                     <Row>
-                        <Col xs sm md={{ size: 6, offset: 3 }}>
-                            <hr></hr>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
+                            <hr width="90%" align="center" ></hr>
                         </Col>
                     </Row>
                     <Row>
-                        <Col xs sm md={{ size: 6, offset: 3 }}>
-                            <Row>
-                                <Col md="3"></Col>
-                                <Col md="auto">
-                                    Already a member? <a href="/Login/">Login</a>
-                                </Col>
-                                <Col md="3"></Col>
-                            </Row>
+                        <Col sm="12" md={{ size: 4, offset: 7 }}>
+                            Already a member? <a href="/Login/">Login</a>
                         </Col>
                     </Row>
+
+
+
+
+
                 </Form>
-            </div>
+
+            </Container>
         )
     }
 }
@@ -149,7 +175,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return{
+    return {
         signUp: (newUser) => dispatch(signUp(newUser))
     }
 }

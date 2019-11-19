@@ -25,7 +25,7 @@ export const signUp = (newUser) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firebase = getFirebase();
         const firestore = getFirestore();
-        const uudit = newUser.userFirstname[0] + newUser.userLastname[0]
+        const init = newUser.userFirstname[0] + newUser.userLastname[0]
     
         
 
@@ -38,7 +38,7 @@ export const signUp = (newUser) => {
                 userFirstname: newUser.userFirstname,
                 userLastname: newUser.userLastname,
                 userTelnumber: newUser.userTelnumber,
-                initials: uudit})
+                initials: init})
         }).then(() => {
             dispatch({ type: 'SIGNUP_SUCCESS' });
         }).catch((err) => {

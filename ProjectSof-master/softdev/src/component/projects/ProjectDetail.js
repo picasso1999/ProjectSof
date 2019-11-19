@@ -26,7 +26,7 @@ const ProjectDetail = (props) => {
                         </CardText>
                     </CardBody>
                 </Card>
-                <Button color= "primary"className="Butter" id="butterfly" >ADD CART</Button>
+                <Button color= "primary"className="Butter" id="butterfly" >ADD TO CART !</Button>
                 </pre>
             </div>
         )

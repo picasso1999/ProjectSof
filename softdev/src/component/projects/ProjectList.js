@@ -9,6 +9,7 @@ const ProjectList = (props) => {
                 return(
                     <Link to={'/project/' + project.id} key={project.id}>
                     <ProjectSummary project={project}  />
+                    <br></br>
                     </Link>
                     
                 )

@@ -8,7 +8,8 @@ import SingIn from './component/auth/SignIn'
 import SingUp from './component/auth/SignUp'
 import CreateProject from './component/projects/CreateProject'
 import Home from './component/home/Home'
-
+import Cart from './component/Cart/Cart'
+import CartDetail from './component/Cart/CartDetail';
 function App() {
   return (
     <BrowserRouter>
@@ -17,9 +18,12 @@ function App() {
         <Switch>
           <Route exact path= "/" component={Home} />
           <Route path= "/project/:id" component={ProjectDetail} />
+          <Route path= "/project2/:id" component={CartDetail} />
           <Route path= "/Login/" component={SingIn} />
           <Route path= "/Register/" component={SingUp} />
           <Route path= "/FoodStore/" component={Dashboard} />
+          <Route path= "/Create/" component={CreateProject} />
+          <Route path= "/Cart/" component={Cart}/>
         </Switch>
       </div>
     </BrowserRouter>

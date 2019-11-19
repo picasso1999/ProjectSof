@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 const SignInlink = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const {profile} = props
+  const { profile } = props
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -21,11 +21,11 @@ const SignInlink = (props) => {
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Welcome
+                Welcome "{profile.initials}"
                 </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem >
-                  Welcome "{profile.initials}"
+                <DropdownItem href="/Create/" >
+                  Create Your FoodStore
                 </DropdownItem >
                 <DropdownItem divider />
                 <DropdownItem href="/Cart/">

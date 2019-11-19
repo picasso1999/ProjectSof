@@ -27,7 +27,7 @@ class CreateProject extends Component {
         e.preventDefault();
         console.log(this.state)
         this.props.createProject(this.state)
-        this.props.history.push('/')
+        this.props.history.push('/FoodStore/')
 
     }
    
@@ -56,7 +56,7 @@ class CreateProject extends Component {
                         <FormGroup>
 
                             <Label for="exName">Name of your restuarant!</Label>
-                            <Input
+                            <Input required
                                 type="text"
                                 name="name"
                                 id="name"
@@ -69,7 +69,7 @@ class CreateProject extends Component {
                     <Col sm="12" md={{ size: 6, offset: 3 }}>
                         <FormGroup>
                             <Label for="exAddress">Address</Label>
-                            <Input
+                            <Input required
                                 type="textarea"
                                 name="address"
                                 id="address"
@@ -81,10 +81,10 @@ class CreateProject extends Component {
                 <Row>
                     <Col sm="12" md={{ size: 6, offset: 3 }}>
                         <FormGroup>
-                            <Select id="select" options={data} onChange={this.handleChange2}>Menu</Select>
+                            <Select required id="select" options={data} onChange={this.handleChange2}>Menu</Select>
                             <Container>  
                                 <Row>
-                                    <Col sm={8}><Input
+                                    <Col sm={8}><Input required
                                         type="textarea"
                                         name="menu"
                                         id="val"
@@ -92,7 +92,7 @@ class CreateProject extends Component {
                                         onChange={this.handleChange} ></Input>
                                     </Col>
                                     <Col>
-                                    <Input
+                                    <Input required
                                         type="number"
                                         name="price"
                                         id="price"

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Button,Container, Row, Col } from 'reactstrap'
 import Noti from './Noti'
 import ProjectList from '../projects/ProjectList'
 import {connect} from 'react-redux'
@@ -10,14 +10,21 @@ import Select from 'react-select'
 import { getFirestore } from 'redux-firestore'
 import project from '../projects/ProjectList'
 class Dashboard extends Component {
-    handlechange = e =>{
-        
+    state = {
+        doc : ''
     }
-    handlesummit =e=>{
-        return(
-            <Redirect to={'/project/' + project.id} key={project.id}>
-                </Redirect>
-        )
+    handlechange =e=>{
+        const firestore = getFirestore()
+        firestore.collection("projects").get().then((docs)=>{
+            docs.forEach((docs)=>{
+                if(docs.data().val==e.label){
+                   this.setState({
+                       doc : docs.id
+                   })
+                   console.dir(this.state.doc)
+                }
+            })
+        })
     }
     render() {
         //console.log(this.props);
@@ -36,6 +43,7 @@ class Dashboard extends Component {
         return (
             <Container>
                 <Select id='search' placeholder="search for menu" options={data} onChange={this.handlechange} openMenuOnClick={this.handlesummit}></Select>
+                <Button href={'/project/'+this.state.doc} key={this.state.doc}>Search</Button>
                 <Row>
                     <Col>
                         <ProjectList projects={projects}/>

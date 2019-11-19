@@ -6,6 +6,7 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 import {Button} from 'reactstrap'
+import { addtocart } from '../../store/actions/addCart';
 const ProjectDetail = (props) => {
     const { project ,auth } = props;
     if (!auth.uid) return <Redirect to='/Login/' />
@@ -26,7 +27,7 @@ const ProjectDetail = (props) => {
                         </CardText>
                     </CardBody>
                 </Card>
-                <Button color= "primary"className="Butter" id="butterfly" >ADD CART</Button>
+                <Button color= "primary"className="Butter" id="butterfly" onClick = {() => addtocart(project.authorId,project.name,project.val,project.price)} >ADD TO CART !</Button>
                 </pre>
             </div>
         )

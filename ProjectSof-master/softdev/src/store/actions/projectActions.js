@@ -9,7 +9,7 @@ export const createProject = (project) => {
             authorFirstName: profile.userFirstname,
             authorLastName: profile.userLastname,
             authorId: authorId,
-            createdAt: time,
+            createdAt: time
         }).then(() => {
             dispatch({type :'CREATE_PROJECT', project }); 
         }).catch((err) => {
