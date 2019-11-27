@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Container, Col, Row, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
-
 import firebase from 'firebase/app';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import TextField from '@material-ui/core/TextField';
 
 class SignUp extends Component {
     state = {
@@ -49,13 +49,14 @@ class SignUp extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <Row>
                         <Col sm="12" md={{ size: 6, offset: 6 }}>
-                            <br></br>
-                            <br></br>
+                            <br />
+
 
 
                             <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
                         </Col>
                     </Row>
+
                     <Row>
                         <Col xs={{ size: 5, offset: 1 }} sm="5" md={{ size: 2, offset: 7 }}>
                             <hr width="85%" align="right"  ></hr>
@@ -68,36 +69,55 @@ class SignUp extends Component {
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Input
-                                    type="username"
-                                    name="username"
-                                    id="userName"
-                                    placeholder="username"
-                                    onChange={this.handleChange} />
+                                <from>
+                                    <TextField
+                                        type="username"
+                                        name="username"
+                                        id="userName"
+                                        label="username"
+                                        variant="outlined"
+                                        fullWidth
+                                        margin="dense"
+                                        width='600'
+                                        onChange={this.handleChange} />
+                                </from>
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Input
-                                    type="password"
-                                    name="password"
-                                    id="userPassword"
-                                    placeholder="Password"
-                                    onChange={this.handleChange} />
+                                <from>
+                                    <TextField
+                                        type="email"
+                                        name="email"
+                                        id="userEmail"
+                                        label="Email"
+                                        variant="outlined"
+                                        fullWidth
+                                        margin="dense"
+                                        width='600'
+                                        onChange={this.handleChange} />
+                                </from>
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Input
-                                    type="email"
-                                    name="email"
-                                    id="userEmail"
-                                    placeholder="Email"
-                                    onChange={this.handleChange} />
+                                <from>
+
+                                    <TextField
+                                        type="password"
+                                        name="password"
+                                        id="userPassword"
+                                        label="password"
+                                        variant="outlined"
+                                        fullWidth
+                                        margin="dense"
+                                        width='600'
+                                        onChange={this.handleChange} />
+                                </from>
                             </FormGroup>
                         </Col>
                     </Row>
@@ -106,23 +126,34 @@ class SignUp extends Component {
                             <Row>
                                 <Col>
                                     <FormGroup>
-
-                                        <Input
-                                            type="Firstname"
-                                            name="Firstname"
-                                            id="userFirstname"
-                                            placeholder="Firstname"
-                                            onChange={this.handleChange} />
+                                        <from>
+                                            <TextField
+                                                type="Firstname"
+                                                name="Firstname"
+                                                id="userFirstname"
+                                                label="Firstname"
+                                                variant="outlined"
+                                                fullWidth
+                                                margin="dense"
+                                                width='600'
+                                                onChange={this.handleChange} />
+                                        </from>
                                     </FormGroup>
                                 </Col>
                                 <Col>
                                     <FormGroup>
-                                        <Input
-                                            type="Lastname"
-                                            name="Lastname"
-                                            id="userLastname"
-                                            placeholder="Lastname"
-                                            onChange={this.handleChange} />
+                                        <from>
+                                            <TextField
+                                                type="Lastname"
+                                                name="Lastname"
+                                                id="userLastname"
+                                                label="Lastname"
+                                                variant="outlined"
+                                                fullWidth
+                                                margin="dense"
+                                                width='600'
+                                                onChange={this.handleChange} />
+                                        </from>
                                     </FormGroup>
                                 </Col>
                             </Row>
@@ -131,12 +162,18 @@ class SignUp extends Component {
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Input
-                                    type="Telnumber"
-                                    name="Telnumber"
-                                    id="userTelnumber"
-                                    placeholder="Telephone number"
-                                    onChange={this.handleChange} />
+                                <from>
+                                    <TextField
+                                        type="Telnumber"
+                                        name="Telnumber"
+                                        id="userTelnumber"
+                                        label="Telephone number"
+                                        variant="outlined"
+                                        fullWidth
+                                        margin="dense"
+                                        width='600'
+                                        onChange={this.handleChange} />
+                                </from>
                             </FormGroup>
                         </Col>
                     </Row>
@@ -156,6 +193,7 @@ class SignUp extends Component {
                             Already a member? <a href="/Login/">Login</a>
                         </Col>
                     </Row>
+                    <br />
 
 
 

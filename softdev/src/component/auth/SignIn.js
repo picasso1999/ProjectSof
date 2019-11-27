@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Container, Col, Row, Button, Form, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
 
 import firebase from 'firebase/app';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import TextField from '@material-ui/core/TextField';
+
+
 
 class SignIn extends Component {
     state = {
@@ -42,7 +45,9 @@ class SignIn extends Component {
         const { authError, auth } = this.props;
         if (auth.uid) return <Redirect to='/' />
         return (
+            
             <Container>
+                
                 <Form onSubmit={this.handleSubmit}>
                     <Row>
                         <Col sm="12" md={{ size: 6, offset: 6 }}>
@@ -65,25 +70,38 @@ class SignIn extends Component {
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Input
-                                    type="email"
-                                    name="email"
-                                    id="userEmail"
-                                    placeholder="Username or Email"
-                                    onChange={this.handleChange} />
+                            <form  >
+                            <TextField
+                                type="email"
+                                name="email"
+                                id="userEmail" 
+                                label="Email" 
+                                variant="outlined"
+                                fullWidth 
+                                margin="dense"                          
+                                width = '600'
+                                onChange={this.handleChange}/>
+                            </form>
+                            
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 7 }}>
                             <FormGroup>
-                                <Input
-                                    type="password"
-                                    name="password"
-                                    id="userPassword"
-                                    placeholder="Password"
-                                    onChange={this.handleChange} />
+                            <TextField 
+                                type="password"
+                                name="password"
+                                id="userPassword"
+                                label="Password" 
+                                variant="outlined" 
+                                fullWidth
+                                margin="dense"
+                                onChange={this.handleChange} 
+                                width = '600'/>
+
                             </FormGroup>
+                            
                         </Col>
                     </Row>
                     <Row>
@@ -108,11 +126,10 @@ class SignIn extends Component {
                     </Row>
                     <Row>
                         <Col sm="12" md={{ size: 4, offset: 7 }}>
-                        <a href="/ForgetPass/"> Forget your password</a>
+                        Food Store? <a href="/ResSignUp/">Partner with us</a>
                         </Col>
                     </Row>
-
-
+                    
 
                 </Form>
             </Container>

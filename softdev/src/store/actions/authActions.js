@@ -17,10 +17,36 @@ export const signOut = () => {
         const firebase = getFirebase();
         firebase.auth().signOut().then(() => {
             dispatch({ type: 'SIGNOUT_SUCCESS' });
+        })
+    }
+}
+export const RessignUp = (newUser) =>{
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firebase = getFirebase();
+        const firestore = getFirestore();
+        const init = newUser.userFirstname[0] + newUser.userLastname[0]
+    
+        
+
+        firebase.auth().createUserWithEmailAndPassword(
+            newUser.userEmail,
+            newUser.userPassword
+        ).then((resp)=>{
+            return firestore.collection("users").doc(resp.user.uid).set({
+                userName: newUser.userName,
+                userFirstname: newUser.userFirstname,
+                userLastname: newUser.userLastname,
+                userTelnumber: newUser.userTelnumber,
+                address : newUser.address,
+                type : "store",
+                initials: init})
+        }).then(() => {
+            dispatch({ type: 'SIGNUP_SUCCESS' });
+        }).catch((err) => {
+            dispatch({ type: 'SIGNUP_ERROR', err });
         });
     }
 }
-
 export const signUp = (newUser) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firebase = getFirebase();
@@ -38,6 +64,7 @@ export const signUp = (newUser) => {
                 userFirstname: newUser.userFirstname,
                 userLastname: newUser.userLastname,
                 userTelnumber: newUser.userTelnumber,
+                type: "user",
                 initials: init})
         }).then(() => {
             dispatch({ type: 'SIGNUP_SUCCESS' });

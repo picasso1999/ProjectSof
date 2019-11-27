@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import moment from 'moment'
-import {Button} from 'reactstrap'
+import Button from '@material-ui/core/Button';
 import { removetocart } from '../../store/actions/addCart';
+import history from '../../history'
 const CartDetail = (props) => {
     const { project ,auth ,id} = props;
     console.dir(id)
@@ -26,8 +26,10 @@ const CartDetail = (props) => {
                            
                         </CardText>
                     </CardBody>
+                    
                 </Card>
-                <Button color= "primary"className="Butter" id="butterfly" onClick = {() => removetocart(id) }>Remove From Cart</Button>
+                <br/>
+                <Button  variant="outlined" color="primary" onClick = {() => hadleClick(id) }>Remove From Cart</Button>
                 
                 </pre>
             </div>
@@ -49,6 +51,14 @@ const CartDetail = (props) => {
 
 
 
+}
+async function hadleClick(id) {
+    removetocart(id)
+    setTimeout(function(){
+        history.push('/FoodStore/')
+        window.location.reload();
+    },1500)
+    
 }
 
 const mapStateToProps = (state, ownProps) => {

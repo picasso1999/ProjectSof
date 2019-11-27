@@ -1,12 +1,16 @@
 import React from 'react'
-import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
-import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-
+import Button from '@material-ui/core/Button';
+import { removetocart } from '../../store/actions/addCart';
+import {
+    Card, CardImg, CardTitle, CardText, CardDeck,
+    CardSubtitle, CardBody
+  } from 'reactstrap';
+import history from '../../history'
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -14,11 +18,11 @@ const useStyles = makeStyles(theme => ({
     paper: {
         padding: theme.spacing(2),
         margin: 'auto',
-        maxWidth: 500,
+        maxWidth: 'auto',
     },
     image: {
-        width: 128,
-        height: 128,
+        width: 170,
+        height: 170,
     },
     img: {
         margin: 'auto',
@@ -27,41 +31,58 @@ const useStyles = makeStyles(theme => ({
         maxHeight: '100%',
     },
 }));
-
-const CartSummary = ({ project }) => {
+async function hadleClick(id) {
+    removetocart(id)
+    setTimeout(function(){
+        history.push('/FoodStore/')
+        window.location.reload();
+    },1500)
+    
+}
+const ProjectSummary = (props) => {
     const classes = useStyles();
-
+    const { project} = props
+    console.dir(project)
     return (
-        <div className={classes.root}>
+        
+        <div className={classes.root} >
+            <br></br>
             <Paper className={classes.paper}>
-                <Grid container spacing={2}>
+                <Grid container spacing={3}>
                     <Grid item>
                         <ButtonBase className={classes.image}>
-                            <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
+                            <img className={classes.img} alt="complex" src={project.image} />
                         </ButtonBase>
                     </Grid>
-                    <Grid item xs={12} sm container>
+                    <Grid item  sm container justify="space-evenly">
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="subtitle1">
-                                    {project.val}
-                                </Typography>
-                                <Typography variant="body2" gutterBottom>
                                     {project.name}
                                 </Typography>
-                                <Typography variant="body2" color="textSecondary">
-                                    {project.address}
+                                <Typography variant="body2" gutterBottom>
+                                    {project.menu}
                                 </Typography>
+                            </Grid>
+                            <Grid item>
+                                
+                            <Grid item>
+                            <Button  variant="outlined" color="primary" onClick = {() => hadleClick(project.id)} >Remove from Cart</Button>
+                        </Grid>
+                        
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <Typography variant="subtitle1">{project.price}฿</Typography>
+                            <Typography variant="subtitle1">{project.price} ฿</Typography>
                         </Grid>
+                        
                     </Grid>
                 </Grid>
             </Paper>
+            
+            <br></br>
         </div>
     );
 }
 
-export default CartSummary
+export default ProjectSummary

@@ -10,8 +10,10 @@ import CreateProject from './component/projects/CreateProject'
 import Home from './component/home/Home'
 import Cart from './component/Cart/Cart'
 import CartDetail from './component/Cart/CartDetail';
+import ResSignUp from './component/auth/ResSignUp';
 function App() {
   return (
+    
     <BrowserRouter>
       <div className="App">
         <NavBar />
@@ -24,6 +26,7 @@ function App() {
           <Route path= "/FoodStore/" component={Dashboard} />
           <Route path= "/Create/" component={CreateProject} />
           <Route path= "/Cart/" component={Cart}/>
+          <Route path= "/ResSignUp/" component = {ResSignUp} />
         </Switch>
       </div>
     </BrowserRouter>

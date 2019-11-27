@@ -5,8 +5,18 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
-import {Button} from 'reactstrap'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import { addtocart } from '../../store/actions/addCart';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
 const ProjectDetail = (props) => {
     const { project ,auth } = props;
     if (!auth.uid) return <Redirect to='/Login/' />
@@ -23,11 +33,13 @@ const ProjectDetail = (props) => {
                         <CardText>
                             <small className="text-muted">Post by {project.authorFirstName}{project.authorLastName}</small>
                             <small className="text-muted">{moment(project.createdAt.toDate().toString()).calendar()}</small>
-                           
+                            <br></br>
+                            <br></br>
+                           <Button variant="outlined" color="primary" className="Butter" id="butterfly" onClick = {() => addtocart(auth.uid,project.name,project.val,project.price,project.image)} >ADD TO CART !</Button>
                         </CardText>
                     </CardBody>
                 </Card>
-                <Button color= "primary"className="Butter" id="butterfly" onClick = {() => addtocart(project.authorId,project.name,project.val,project.price)} >ADD TO CART !</Button>
+                
                 </pre>
             </div>
         )

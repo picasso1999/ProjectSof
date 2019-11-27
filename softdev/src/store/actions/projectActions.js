@@ -6,6 +6,7 @@ export const createProject = (project) => {
         const time =new Date()
         firestore.collection('projects').add({
             ...project,
+            
             authorFirstName: profile.userFirstname,
             authorLastName: profile.userLastname,
             authorId: authorId,
